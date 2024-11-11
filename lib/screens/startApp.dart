@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
+import 'package:shopping_app_ui/screens/account.dart';
+import 'package:shopping_app_ui/screens/cart.dart';
 import 'package:shopping_app_ui/screens/home.dart';
+import 'package:shopping_app_ui/screens/notification.dart';
 
 class StartAppView extends StatefulWidget {
   const StartAppView({super.key});
@@ -90,13 +93,12 @@ class _StartAppViewState extends State<StartAppView> {
                           padding: EdgeInsets.all(
                               4), // Add padding to size the background
                           child: Icon(
-                              _currentPage == 0
-                                  ? Icons.home
-                                  : Icons.home_outlined,
-                              color: _currentPage == 0
-                                  ? Colors.white
-                                  : Colors.black,
-                                  ), // Icon color
+                            _currentPage == 0
+                                ? Icons.home
+                                : Icons.home_outlined,
+                            color:
+                                _currentPage == 0 ? Colors.white : Colors.black,
+                          ), // Icon color
                         ),
                       ),
                       GButton(
@@ -123,9 +125,8 @@ class _StartAppViewState extends State<StartAppView> {
                         ),
                       ),
                       GButton(
-                          icon: Icons.notifications_none,
-                          text: 'Notifications',
-                          
+                        icon: Icons.notifications_none,
+                        text: 'Notifications',
                         leading: Container(
                           // Wrap the icon in a background
                           decoration: BoxDecoration(
@@ -144,20 +145,19 @@ class _StartAppViewState extends State<StartAppView> {
                               color: _currentPage == 2
                                   ? Colors.white
                                   : Colors.black), // Icon color
-                        ),),
-                      GButton(icon: Icons.person_outline, text: 'Account',
-                          
+                        ),
+                      ),
+                      GButton(
+                        icon: Icons.person_outline,
+                        text: 'Account',
                         leading: Container(
-                         
                           decoration: BoxDecoration(
                             color: _currentPage == 3
                                 ? Colors.black
-                                : Colors
-                                    .transparent, 
-                            shape: BoxShape.circle, 
+                                : Colors.transparent,
+                            shape: BoxShape.circle,
                           ),
-                          padding: EdgeInsets.all(
-                              4),
+                          padding: EdgeInsets.all(4),
                           child: Icon(
                               _currentPage == 3
                                   ? Icons.person
@@ -165,7 +165,8 @@ class _StartAppViewState extends State<StartAppView> {
                               color: _currentPage == 3
                                   ? Colors.white
                                   : Colors.black),
-                        ),),
+                        ),
+                      ),
                     ]),
               )),
         ),
@@ -177,11 +178,11 @@ class _StartAppViewState extends State<StartAppView> {
     if (_currentPage == 0) {
       return const HomeView();
     } else if (_currentPage == 1) {
-      return Container();
+      return CartView();
     } else if (_currentPage == 2) {
-      return Container();
+      return NotificationView();
     } else {
-      return Container();
+      return AccountView();
     }
   }
 }

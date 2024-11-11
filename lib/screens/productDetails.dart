@@ -306,7 +306,7 @@ class _ProductViewState extends State<ProductView> {
                         ],
                       ),
                       Card(
-                        margin: EdgeInsets.only(right: 15),
+                        margin: EdgeInsets.only(right: 6),
                         elevation: 8,
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(20)),

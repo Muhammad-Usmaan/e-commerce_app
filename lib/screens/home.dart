@@ -14,8 +14,8 @@ class _HomeViewState extends State<HomeView> {
   Widget offerContainer(String offerPercentage, String imageUrl) {
     return Container(
       margin: const EdgeInsets.only(right: 12.0),
-      width: 320,
-      height: 170,
+      width: 290,
+      height: 180,
       decoration: BoxDecoration(
           image:
               DecorationImage(image: NetworkImage(imageUrl), fit: BoxFit.cover),
@@ -167,6 +167,7 @@ class _HomeViewState extends State<HomeView> {
                                       borderRadius: BorderRadius.circular(10),
                                       image: DecorationImage(
                                           image: NetworkImage(product.imageUrl),
+                                          
                                           fit: BoxFit.cover),
                                     ),
                                   ),
@@ -247,67 +248,66 @@ class _HomeViewState extends State<HomeView> {
                 ),
               ],
             ),
-            SizedBox(
-              height: MediaQuery.of(context).size.height,
-              child: ListView.builder(
-                itemCount: products.length,
-                itemBuilder: (context, index) {
-                  final product = products[index];
-                  return Card(
-                    elevation: 10,
-                    child: ListTile(
-                      onTap: (){
-                         Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => ProductView(
-                                    product: product,
-                                  )),
-                        );
-                      },
-                      leading: ClipRRect(
-                          borderRadius: BorderRadius.circular(8),
-                          child: Image(
-                            image: NetworkImage(product.imageUrl,
+            ListView.builder(
+              shrinkWrap: true,
+              
+              itemCount: products.length,
+              itemBuilder: (context, index) {
+                final product = products[index];
+                return Card(
+                  elevation: 10,
+                  child: ListTile(
+                    onTap: (){
+                       Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => ProductView(
+                                  product: product,
+                                )),
+                      );
+                    },
+                    leading: ClipRRect(
+                        borderRadius: BorderRadius.circular(8),
+                        child: Image(
+                          image: NetworkImage(product.imageUrl,
+                          ),
+                          height: 50,
+                          width: 50,
+                          fit: BoxFit.cover,
+                        )),
+                    title: Text(product.name,
+                    style: GoogleFonts.dmSans(
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black,
+                          fontSize: 16
+                        ),),
+                    subtitle: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(product.subText,
+                        style: GoogleFonts.dmSans(
+                          fontWeight: FontWeight.bold,
+                          color: Colors.grey
+                        ),
+                        ),
+                        Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Icon(
+                              Icons.star,
+                              color: Colors.yellow,
+                              size: 18,
                             ),
-                            height: 50,
-                            width: 50,
-                            fit: BoxFit.cover,
-                          )),
-                      title: Text(product.name,
-                      style: GoogleFonts.dmSans(
-                            fontWeight: FontWeight.bold,
-                            color: Colors.black,
-                            fontSize: 16
-                          ),),
-                      subtitle: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(product.subText,
-                          style: GoogleFonts.dmSans(
-                            fontWeight: FontWeight.bold,
-                            color: Colors.grey
-                          ),
-                          ),
-                          Row(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              Icon(
-                                Icons.star,
-                                color: Colors.yellow,
-                                size: 18,
-                              ),
-                              SizedBox(width: 6,),
-                              Text('(4.3)')
-                            ],
-                          )
-                        ],
-                      ),
+                            SizedBox(width: 6,),
+                            Text('(4.3)')
+                          ],
+                        )
+                      ],
                     ),
-                  );
-                },
-              ),
+                  ),
+                );
+              },
             ),
           ],
         ),
